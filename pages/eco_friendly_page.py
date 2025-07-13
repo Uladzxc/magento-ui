@@ -26,9 +26,7 @@ class EcoFriendly(BasePage):
         else:
             raise ValueError("view_type must be 'grid' or 'list'")
 
-        actual_display = self.driver.execute_script(
-            "return window.getComputedStyle(arguments[0]).display;", container
-        )
+        actual_display = container.value_of_css_property("display")
 
         assert actual_display == expected_display, (
             f"Expected display: '{expected_display}' for view '{view_type}', but got: '{actual_display}'"
