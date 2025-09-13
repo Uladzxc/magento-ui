@@ -10,6 +10,7 @@ from pages.sale_page import Sale
 @pytest.fixture()
 def driver():
     options = Options()
+    options.add_argument('--headless')
     chrome_driver = webdriver.Chrome(options=options)
     # sleep(3)
     return chrome_driver
