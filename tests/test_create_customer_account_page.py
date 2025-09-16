@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-@pytest.mark('extended')
+@pytest.mark.extended
 @allure.description('Check if conflict occurs when account already exist ')
 def test_create_customer_account_when_email_already_used(create_customer_account_page):
     create_customer_account_page.open_page()
@@ -13,7 +13,7 @@ def test_create_customer_account_when_email_already_used(create_customer_account
         'If you are sure that it is your email address, click here to get your password and access your account.'
     )
 
-@pytest.mark('extended')
+@pytest.mark.extended
 @allure.description('Check validation for the case when passwords are not the same')
 def test_check_validation_when_password_and_confirm_password_values_arent_the_same(create_customer_account_page):
     create_customer_account_page.open_page()
@@ -22,11 +22,11 @@ def test_check_validation_when_password_and_confirm_password_values_arent_the_sa
     )
     create_customer_account_page.check_passwords_arent_the_same_text('Please enter the same value again.')
 
-@pytest.mark('extended')
+@pytest.mark.extended
 @allure.description('Check validation when any required field in empty')
 def test_check_validation_when_any_required_field_is_empty(create_customer_account_page):
     create_customer_account_page.open_page()
     create_customer_account_page.fill_create_new_customer_account_form(
         '', 'Doe', 'janedoe0706@gmail.com', 'Janedoe123@', 'Janedoe123@'
     )
-    create_customer_account_page.check_required_field_is_empty_text('This is a required field.')
+    create_customer_account_page.check_required_field_is_empty_text('This is required field.')
