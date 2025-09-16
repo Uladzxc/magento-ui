@@ -39,22 +39,22 @@ jobs:
           sudo ln -s /opt/allure-2.35.1/bin/allure /usr/bin/allure
 
       - name: Run all tests
-        if: github.event.inputs.deployment_target == 'all'
+        if: ${{ github.event.inputs.deployment_target == 'all' }}
         run: pytest --alluredir=allure-results
         continue-on-error: true
 
       - name: Run smoke tests
-        if: github.event.inputs.deployment_target == 'smoke'
+        if: ${{ github.event.inputs.deployment_target == 'smoke' }}
         run: pytest tests/smoke --alluredir=allure-results
         continue-on-error: true
 
       - name: Run regression tests
-        if: github.event.inputs.deployment_target == 'regression'
+        if: ${{ github.event.inputs.deployment_target == 'regression' }}
         run: pytest tests/regression --alluredir=allure-results
         continue-on-error: true
 
       - name: Run extended tests
-        if: github.event.inputs.deployment_target == 'extended'
+        if: ${{ github.event.inputs.deployment_target == 'extended' }}
         run: pytest tests/extended --alluredir=allure-results
         continue-on-error: true
 
