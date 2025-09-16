@@ -34,9 +34,9 @@ jobs:
           pip install allure-pytest
           sudo apt-get update
           sudo apt-get install -y openjdk-11-jre unzip wget
-          wget https://github.com/allure-framework/allure2/releases/download/2.27.2/allure-2.27.2.zip
-          unzip -o allure-2.27.2.zip -d /opt/
-          sudo ln -s /opt/allure-2.27.2/bin/allure /usr/bin/allure
+          wget https://github.com/allure-framework/allure2/releases/download/2.35.1/allure-2.35.1.zip
+          unzip -o allure-2.35.1.zip -d /opt/
+          sudo ln -s /opt/allure-2.35.1/bin/allure /usr/bin/allure
 
       - name: Run all tests
         if: github.event.inputs.deployment_target == 'all'
