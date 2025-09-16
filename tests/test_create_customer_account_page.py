@@ -29,4 +29,4 @@ def test_check_validation_when_any_required_field_is_empty(create_customer_accou
     create_customer_account_page.fill_create_new_customer_account_form(
         '', 'Doe', 'janedoe0706@gmail.com', 'Janedoe123@', 'Janedoe123@'
     )
-    create_customer_account_page.check_required_field_is_empty_text('This is a required field.')
+    create_customer_account_page.check_required_field_is_empty_text('This is required field.')
