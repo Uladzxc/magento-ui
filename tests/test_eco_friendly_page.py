@@ -1,20 +1,20 @@
 import pytest
 import allure
-@pytest.mark('regression')
+@pytest.mark.regression
 @allure.description('Check if grid type view is selected')
 def test_products_displayed_as_grid(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.select_view("grid")
     eco_friendly_page.assert_display_type("grid", expected_display="block")
 
-@pytest.mark('regression')
+@pytest.mark.regression
 @allure.description('Check if list type view is selected')
 def test_products_displayed_as_list(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.select_view("list")
     eco_friendly_page.assert_display_type("list", expected_display="block")
 
-@pytest.mark('smoke')
+@pytest.mark.smoke
 @allure.description('Check if price options available')
 def test_select_price_option_in_the_dropdown_list(eco_friendly_page):
     eco_friendly_page.open_page()
