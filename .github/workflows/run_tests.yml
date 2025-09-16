@@ -3,6 +3,17 @@ name: Python autotests
 on:
   push:
   workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: 'Tests to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - smoke
+          - regression
+          - extended
 
 jobs:
   run-tests:
@@ -21,7 +32,22 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run tests
-        run: |
-          pytest
+      - name: Run all tests
+        if: github.event.inputs.deployment_target == 'all'
+        run: pytest --alluredir=allure-results
+        continue-on-error: true
+
+      - name: Run smoke tests
+        if: github.event.inputs.deployment_target == 'smoke'
+        run: pytest tests/smoke --alluredir=allure-results
+        continue-on-error: true
+
+      - name: Run regression tests
+        if: github.event.inputs.deployment_target == 'regression'
+        run: pytest tests/regression --alluredir=allure-results
+        continue-on-error: true
+
+      - name: Run extended tests
+        if: github.event.inputs.deployment_target == 'extended'
+        run: pytest tests/extended --alluredir=allure-results
         continue-on-error: true
